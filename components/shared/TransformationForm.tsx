@@ -109,7 +109,7 @@ const TransformationForm = ({
           if (newImage) {
             form.reset();
             setImage(data);
-            router.push(`/transformation/${newImage._id}`);
+            router.push(`/transformations/${newImage._id}`);
           }
         } catch (error) {
           console.log(error);
@@ -128,7 +128,7 @@ const TransformationForm = ({
           });
 
           if (updatedImage) {
-            router.push(`/transformation/${updatedImage._id}`);
+            router.push(`/transformations/${updatedImage._id}`);
           }
         } catch (error) {
           console.log(error);
@@ -219,6 +219,7 @@ const TransformationForm = ({
                 onValueChange={(value) =>
                   onSelectFieldHandler(value, field.onChange)
                 }
+                value={field.value}
               >
                 <SelectTrigger className="select-field">
                   <SelectValue placeholder="Select Size" />
