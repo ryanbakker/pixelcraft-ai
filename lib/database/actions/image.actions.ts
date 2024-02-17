@@ -1,12 +1,13 @@
 "use server";
 
-import { handleError } from "@/lib/utils";
-import { connectToDatabase } from "../mongoose";
 import { revalidatePath } from "next/cache";
-import User from "../models/user.model";
-import Image from "../models/image.model";
 import { redirect } from "next/navigation";
+
 import { v2 as cloudinary } from "cloudinary";
+import User from "../models/user.model";
+import { connectToDatabase } from "../mongoose";
+import Image from "../models/image.model";
+import { handleError } from "@/lib/utils";
 
 const populateUser = (query: any) =>
   query.populate({
@@ -15,7 +16,7 @@ const populateUser = (query: any) =>
     select: "_id firstName lastName clerkId",
   });
 
-// Add Image
+// ADD IMAGE
 export async function addImage({ image, userId, path }: AddImageParams) {
   try {
     await connectToDatabase();
@@ -39,7 +40,7 @@ export async function addImage({ image, userId, path }: AddImageParams) {
   }
 }
 
-// Update Image
+// UPDATE IMAGE
 export async function updateImage({ image, userId, path }: UpdateImageParams) {
   try {
     await connectToDatabase();
@@ -47,7 +48,7 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
     const imageToUpdate = await Image.findById(image._id);
 
     if (!imageToUpdate || imageToUpdate.author.toHexString() !== userId) {
-      throw new Error("Unauthorized or Image not found");
+      throw new Error("Unauthorized or image not found");
     }
 
     const updatedImage = await Image.findByIdAndUpdate(
@@ -64,7 +65,7 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
   }
 }
 
-// Delete Image
+// DELETE IMAGE
 export async function deleteImage(imageId: string) {
   try {
     await connectToDatabase();
@@ -77,7 +78,7 @@ export async function deleteImage(imageId: string) {
   }
 }
 
-// Get Image
+// GET IMAGE
 export async function getImageById(imageId: string) {
   try {
     await connectToDatabase();
@@ -92,7 +93,7 @@ export async function getImageById(imageId: string) {
   }
 }
 
-// Get All Images
+// GET IMAGES
 export async function getAllImages({
   limit = 9,
   page = 1,
@@ -112,7 +113,7 @@ export async function getAllImages({
       secure: true,
     });
 
-    let expression = "folder=pixelcraft";
+    let expression = "folder=imaginify";
 
     if (searchQuery) {
       expression += ` AND ${searchQuery}`;
@@ -146,8 +147,39 @@ export async function getAllImages({
 
     return {
       data: JSON.parse(JSON.stringify(images)),
-      totalPages: Math.ceil(totalImages / limit),
+      totalPage: Math.ceil(totalImages / limit),
       savedImages,
+    };
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+// GET IMAGES BY USER
+export async function getUserImages({
+  limit = 9,
+  page = 1,
+  userId,
+}: {
+  limit?: number;
+  page: number;
+  userId: string;
+}) {
+  try {
+    await connectToDatabase();
+
+    const skipAmount = (Number(page) - 1) * limit;
+
+    const images = await populateUser(Image.find({ author: userId }))
+      .sort({ updatedAt: -1 })
+      .skip(skipAmount)
+      .limit(limit);
+
+    const totalImages = await Image.find({ author: userId }).countDocuments();
+
+    return {
+      data: JSON.parse(JSON.stringify(images)),
+      totalPages: Math.ceil(totalImages / limit),
     };
   } catch (error) {
     handleError(error);
