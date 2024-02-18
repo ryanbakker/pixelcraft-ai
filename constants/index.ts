@@ -1,42 +1,42 @@
 export const navLinks = [
   {
     label: "Home",
-    route: "/",
+    route: "/dashboard",
     icon: "/assets/icons/home.svg",
   },
   {
     label: "Image Restore",
-    route: "/transformations/add/restore",
+    route: "/dashboard/transformations/add/restore",
     icon: "/assets/icons/image.svg",
   },
   {
     label: "Generative Fill",
-    route: "/transformations/add/fill",
+    route: "/dashboard/transformations/add/fill",
     icon: "/assets/icons/stars.svg",
   },
   {
     label: "Object Remove",
-    route: "/transformations/add/remove",
+    route: "/dashboard/transformations/add/remove",
     icon: "/assets/icons/scan.svg",
   },
   {
     label: "Object Recolor",
-    route: "/transformations/add/recolor",
+    route: "/dashboard/transformations/add/recolor",
     icon: "/assets/icons/filter.svg",
   },
   {
     label: "Background Remove",
-    route: "/transformations/add/removeBackground",
+    route: "/dashboard/transformations/add/removeBackground",
     icon: "/assets/icons/camera.svg",
   },
   {
     label: "Profile",
-    route: "/profile",
+    route: "/dashboard/profile",
     icon: "/assets/icons/profile.svg",
   },
   {
     label: "Buy Credits",
-    route: "/credits",
+    route: "/dashboard/credits",
     icon: "/assets/icons/bag.svg",
   },
 ];
@@ -47,10 +47,10 @@ export const plans = [
     name: "Free",
     icon: "/assets/icons/free-plan.svg",
     price: 0,
-    credits: 20,
+    credits: 5,
     inclusions: [
       {
-        label: "20 Free Credits",
+        label: "5 Free Credits",
         isIncluded: true,
       },
       {
@@ -71,11 +71,11 @@ export const plans = [
     _id: 2,
     name: "Pro Package",
     icon: "/assets/icons/free-plan.svg",
-    price: 40,
-    credits: 120,
+    price: 15,
+    credits: 100,
     inclusions: [
       {
-        label: "120 Credits",
+        label: "100 Credits",
         isIncluded: true,
       },
       {
@@ -96,11 +96,11 @@ export const plans = [
     _id: 3,
     name: "Premium Package",
     icon: "/assets/icons/free-plan.svg",
-    price: 199,
-    credits: 2000,
+    price: 60,
+    credits: 800,
     inclusions: [
       {
-        label: "2000 Credits",
+        label: "800 Credits",
         isIncluded: true,
       },
       {

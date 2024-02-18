@@ -82,6 +82,8 @@ const Home = () => {
           />
         </div>
       </div>
+
+      <Footer />
     </main>
   );
 };
