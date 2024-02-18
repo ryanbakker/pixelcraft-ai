@@ -27,7 +27,7 @@ const Home = () => {
           <div className="max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full">
             <div className="grid grid-cols-1 md:grid-cols-3">
               <div className="col-span-2 flex flex-col justify-center h-full gap-10 mt-6">
-                <h1 className="text-7xl font-black font-sans leading-[80px]">
+                <h1 className="text-xl lg:text-7xl font-black font-sans leading-[80px]">
                   Elevate Your Artistry – Pixelcraft AI Unleashes Possibilities
                 </h1>
 

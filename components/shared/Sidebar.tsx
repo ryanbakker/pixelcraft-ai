@@ -24,9 +24,11 @@ const Sidebar = () => {
               {navLinks.slice(0, 6).map((link) => {
                 const isActive = link.route === pathname;
 
+                console.log(link.route, pathname);
+
                 return (
                   <li
-                    key={link.route}
+                    key={`/dashboard/${link.route}`}
                     className={`sidebar-nav_element group ${
                       isActive
                         ? "bg-purple-gradient text-white"
