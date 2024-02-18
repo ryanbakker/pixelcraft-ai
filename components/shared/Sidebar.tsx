@@ -14,7 +14,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="flex size-full flex-col gap-4">
-        <Link href="/" className="sidebar-logo">
+        <Link href="/dashboard" className="sidebar-logo">
           <Logo />
         </Link>
 
@@ -33,7 +33,10 @@ const Sidebar = () => {
                         : "text-gray-700"
                     }`}
                   >
-                    <Link href={link.route} className="sidebar-link">
+                    <Link
+                      href={`/dashboard/${link.route}`}
+                      className="sidebar-link"
+                    >
                       <Image
                         src={link.icon}
                         alt="logo"
@@ -61,7 +64,10 @@ const Sidebar = () => {
                         : "text-gray-700"
                     }`}
                   >
-                    <Link href={link.route} className="sidebar-link">
+                    <Link
+                      href={`/dashboard/${link.route}`}
+                      className="sidebar-link"
+                    >
                       <Image
                         src={link.icon}
                         alt="logo"

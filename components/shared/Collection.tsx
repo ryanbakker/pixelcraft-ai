@@ -97,7 +97,10 @@ export const Collection = ({
 const Card = ({ image }: { image: IImage }) => {
   return (
     <li>
-      <Link href={`/transformations/${image._id}`} className="collection-card">
+      <Link
+        href={`/dashboard/transformations/${image._id}`}
+        className="collection-card"
+      >
         <CldImage
           src={image.publicId}
           alt={image.title}

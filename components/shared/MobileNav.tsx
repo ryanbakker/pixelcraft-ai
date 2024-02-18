@@ -58,7 +58,7 @@ const MobileNav = () => {
                         } p-18 flex whitespace-nowrap text-dark-700`}
                       >
                         <Link
-                          href={link.route}
+                          href={`/dashboard/${link.route}`}
                           className="sidebar-link cursor-pointer"
                         >
                           <Image

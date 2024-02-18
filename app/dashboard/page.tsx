@@ -20,7 +20,7 @@ const Dashboard = async ({ searchParams }: SearchParamProps) => {
           {navLinks.slice(1, 5).map((link) => (
             <Link
               key={link.route}
-              href={link.route}
+              href={`/dashboard/${link.route}`}
               className="flex-center flex-col gap-2"
             >
               <li className="flex-center w-fit rounded-full bg-white p-4">

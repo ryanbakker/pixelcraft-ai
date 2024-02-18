@@ -109,7 +109,7 @@ const TransformationForm = ({
           if (newImage) {
             form.reset();
             setImage(data);
-            router.push(`/transformations/${newImage._id}`);
+            router.push(`/dashboard/transformations/${newImage._id}`);
           }
         } catch (error) {
           console.log(error);
@@ -128,7 +128,7 @@ const TransformationForm = ({
           });
 
           if (updatedImage) {
-            router.push(`/transformations/${updatedImage._id}`);
+            router.push(`/dashboard/transformations/${updatedImage._id}`);
           }
         } catch (error) {
           console.log(error);
